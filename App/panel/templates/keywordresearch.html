@@ -1,0 +1,71 @@
+{% extends  'basic.html' %}
+{%block content%}
+
+<!--dust particel-->
+{% comment %} <div>
+    <div class="starsec"></div>
+    <div class="starthird"></div>
+    <div class="starfourth"></div>
+    <div class="starfifth"></div>
+  </div> {% endcomment %}
+  <!--Dust particle end -->
+ 
+
+              <div class="card-body wow-bg" id="formBg">
+                <h3 class="colorboard">Keyword researcher</h3>
+  
+                {% comment %} <p class="text-muted">Sign In to your account</p> {% endcomment %}
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="input-group mb-3"> 
+                    <input name="keyword" type="text" class="form-control textbox-dg" placeholder="Writing Keyword"> 
+                  </div>
+                  <div style="display:inline-block" class="input-group mb-3"> 
+                    <label class=>Layer</label>
+                    <select name="layout" type="text" class="form-control textbox-dg"> 
+                      <option selected class="form-control textbox-dg" value=1>1</option>
+                      <option class="form-control textbox-dg" value=2>2</option>
+                      <option class="form-control textbox-dg" value=3>3</option>
+                      {% comment %} <option class="form-control textbox-dg" value=4>4</option> {% endcomment %}
+                    </select>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-12"> <button type="submit" class="btn btn-primary btn-block logn-btn" data-toggle="modal" data-target="#exampleModalCenter">Search</button> </div>
+                  </div>
+                </form>
+  
+              </div>
+
+              {%if result%}
+              Count:{{count}}
+              {%for i in result%}
+                <p>{{i}}</p><br>
+              {%endfor%}
+
+              {%endif%}
+           
+
+<!-- Modal -->
+<!-- Button trigger modal -->
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div style="background:transparent" class="modal-content">
+
+      <div class="modal-body">
+        <div class="spinner-border text-warning" role="status">
+          <h1>-------<h1>
+          <span class="sr-only">Loading...</span>
+        </div>    
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{%endblock%}
+
+
